@@ -1,8 +1,45 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import * as React from "react";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import axios from "axios";
 
 export default function Home() {
+  const [res, setRes] = React.useState("");
+
+  const query = `
+    query QueryPosts {
+      posts {
+        nodes {
+          id
+          content
+          title
+          slug
+          featuredImage {
+            node {
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  (async () => {
+    try {
+      const response = await axios.post("https://ewabs.wpengine.com/graphql", {
+        query,
+      });
+      setRes(JSON.stringify(response.data));
+      console.log("QUERYYY", response);
+    } catch (e) {
+      console.log(e);
+    }
+  })();
   return (
     <div className={styles.container}>
       <Head>
@@ -17,8 +54,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <code className={styles.code}>FOO {res} BAR </code>
         </p>
 
         <div className={styles.grid}>
@@ -58,12 +94,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
