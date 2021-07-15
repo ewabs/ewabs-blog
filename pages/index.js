@@ -85,13 +85,6 @@ export default function Home() {
         <div className={styles.container}>
           {res}
         </div>
-
-//         <div>
-//           <p className={styles.description}>
-//             <code className={styles.code}>FOO {res} BAR </code>
-//           </p>
-//         </div>
-
       </main>
 
       <footer className={styles.footer}>
