@@ -34,7 +34,7 @@ export default function Home() {
       const response = await axios.post("https://ewabs.wpengine.com/graphql", {
         query,
       });
-      setRes(JSON.stringify(response.data));
+      setRes(JSON.stringify(response.data.data.posts.nodes));
       console.log("QUERYYY", response);
     } catch (e) {
       console.log(e);
@@ -52,6 +52,8 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <h1 className={styles.title}>and ewabs blog</h1>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -81,9 +83,17 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
-        <div className={styles.container}>
-          {res}
+          {res &&
+            JSON.parse(res).map((post) => (
+              <div className="wrap">
+                <h2>{post.title} </h2>
+                <div
+                  className={styles.card2}
+                  dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
+                />
+              </div>
+            ))}
+          {res && res?.length < 1 && <p>No posts found.</p>}
         </div>
       </main>
 
