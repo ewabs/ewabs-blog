@@ -88,6 +88,7 @@ export default function Home() {
               <div className="wrap">
                 <h2>{post.title} </h2>
                 <div
+                  // eslint-disable-next-line react/no-danger
                   className={styles.card2}
                   dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
                 />
