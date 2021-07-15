@@ -85,7 +85,7 @@ export default function Home() {
           </a>
           {res &&
             JSON.parse(res).map((post) => (
-              <div className="wrap">
+              <div className="wrap" key={post.id}>
                 <h2>{post.title} </h2>
                 <div
                   // eslint-disable-next-line react/no-danger
