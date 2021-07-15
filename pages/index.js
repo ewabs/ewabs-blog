@@ -53,12 +53,6 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <div>
-          <p className={styles.description}>
-            <code className={styles.code}>FOO {res} BAR </code>
-          </p>
-        </div>
-
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
@@ -88,6 +82,16 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <div className={styles.container}>
+          {res}
+        </div>
+
+//         <div>
+//           <p className={styles.description}>
+//             <code className={styles.code}>FOO {res} BAR </code>
+//           </p>
+//         </div>
+
       </main>
 
       <footer className={styles.footer}>
