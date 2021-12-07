@@ -50,7 +50,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to ewabs blog siemka!</h1>
+          Welcome to ewabs blog heyo!</h1>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
